@@ -1,0 +1,38 @@
+{include file="public/header"}
+<h2>修改歌曲</h2>
+<form action="{:url('update')}" enctype="multipart/form-data" method="post">
+	<div class="form-group">
+		<label for="">歌曲名称</label>
+		<input type="text" class="form-control" name="music_name" value="{$info.music_name}">
+	</div>
+	<div class="form-group">
+		<label for="">所属歌手</label>
+		<select name="star_id" >
+			<option value="">请选择</option>
+			{foreach $star_list as $item}
+			<option {if condition="$info['star_id'] == $item['id']" } selected {/if} value="{$item.id}">{$item.star_name}</option>
+			{/foreach}
+
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="">虾米ID</label>
+		 <input type="text" name="xiami_id" value="{$info.xiami_id}">
+		 <embed src="http://www.xiami.com/widget/0_{$info.xiami_id}/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></embed>
+	</div>
+	
+	<div class="form-group">
+		<label for="">mp3</label>
+		<input type="file"  name="mp3">
+	</div>
+	<div class="form-group">
+		<label for="">歌词</label>
+		<textarea name="lrc" id=""  style="width: 1146px; height: 190px;">{$info.lrc}</textarea>
+	</div>
+	<div class="form-group">
+		<input type="hidden" name="id" value="{$info.id}">
+		<input type="submit" class="btn-success btn" value="更新">
+	</div>
+</form>
+
+{include file="public/footer"}

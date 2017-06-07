@@ -1,0 +1,33 @@
+{include file="public/header"}
+<h2>分类列表管理</h2>
+<div class="row">
+	<div class="col-lg-7">
+		<a href="{:url('goods/index')}" class="btn btn-success">返回商品列表</a>
+		<a href="{:url('add')}" class="btn btn-success">添加分类</a>
+	</div>
+	<div class="col-lg-5 pull-right">
+		<form action="{:url('index')}">
+			分类名称：<input type="text" name="keyword" class="form-control" style="display: inline-block; width: 30%;" placeholder="分类名"> 
+			<input type="submit" id="sbt_info" class="btn btn-info" value="搜索"></form>
+	</div>
+</div>
+<table class="table">
+	<tr>
+		<th>ID</th>
+		<th>分类名称</th>
+		<th>操作</th>
+	</tr>
+	{foreach $goods_list as $item}
+	<tr>
+		<td>{$item.id}</td>
+		<td>{$item['cate_name']}</td>
+
+		<td>
+			<a href='{:url("edit",array("id"=>$item.id))}' class="btn btn-info">修改</a>
+			<a href='{:url("delete",array("id"=>$item.id))}' class="btn btn-danger">删除</a>
+		</td>
+	</tr>
+	{/foreach}
+</table>
+{$goods_list->render()}
+{include file="public/footer"}

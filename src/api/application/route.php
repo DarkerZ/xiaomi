@@ -18,3 +18,4 @@ Route::get('/',function(){
 
 // 接口：是给到你合作的项目公司去提供数据
 
+Route::resource('user','mobile/user');

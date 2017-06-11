@@ -1,30 +1,25 @@
 <template>
   <div id="app">
+  <transition name="fadeIn">
     <router-view></router-view>
-    <mt-tabbar fixed>
-      <mt-tab-item id="index">
-         <router-link to="/index">首页</router-link></mt-tab-item>
-      <mt-tab-item id="category">
-       <router-link to="/category">分类</router-link></mt-tab-item>
-       <mt-tab-item id="buycar">
-       <router-link to="/buycar">购物车</router-link></mt-tab-item>
-      <mt-tab-item id="personal">
-        <router-link to="/personal">我的</router-link></mt-tab-item>
-      
-    </mt-tabbar>
+  </transition>
+    <foot></foot>
   </div>
 </template>
 
-<script>
-
+<script type="es6">
+import foot from './components/foot'
 export default {
   name: 'app',
   components: {
+    foot
   }
 }
+
 </script>
 
-<style>
+<style scoped lang="scss">
+@import 'assets/css/mixin.scss';
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

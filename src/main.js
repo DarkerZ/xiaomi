@@ -8,7 +8,7 @@ import mint from 'mint-ui'
 import VueResource from 'vue-resource'
 
 import 'mint-ui/lib/style.css'
-// import './assets/css/style.css'
+import './assets/css/style.css'
 import './assets/css/mui.min.css'
 
 Vue.use(mint)

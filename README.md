@@ -1,4 +1,4 @@
-# my-project
+# xiaomi-project
 
 > A Vue.js project
 

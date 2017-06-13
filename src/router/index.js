@@ -44,8 +44,22 @@ let router = new Router({
       }
     },
     {
+      path: '/personal/info/editInfo',
+      component: require('../views/personal/editInfo'),
+      meta: {
+        requireLogin: true
+      }
+    },
+    {
       path: '/personal/order',
       component: require('../views/personal/order'),
+      meta: {
+        requireLogin: true
+      }
+    },
+    {
+      path: '/personal/order/order_detail',
+      component: require('../views/personal/order_detail'),
       meta: {
         requireLogin: true
       }

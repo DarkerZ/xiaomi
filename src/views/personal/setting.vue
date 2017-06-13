@@ -1,6 +1,6 @@
 <template>
 	<div id="setting">
-		<Head></Head>
+		<Head headTitle="设置" backUrl="/personal"></Head>
 		<div class="items">
       <label>账号管理</label>
       <ul>
@@ -44,11 +44,10 @@ export default {
   	}
   },
   created() {
-    this.setHeadTitle('设置'),
-    this.setHeadUrl('/personal')
+    
   },
   methods: {
-    ...mapMutations(['setHeadTitle','setHeadUrl','setCurUser']), //映射方法
+    ...mapMutations(['setCurUser']), //映射方法
     dologout() {
       localStorage.removeItem('curUser')
       this.setCurUser('')

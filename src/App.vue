@@ -3,7 +3,7 @@
   <transition name="fadeIn">
     <router-view></router-view>
   </transition>
-    <foot></foot>
+    <foot v-if="$route.path=='/'||$route.path=='/category'||$route.path=='/buycar'||$route.path=='/personal'"></foot>
   </div>
 </template>
 

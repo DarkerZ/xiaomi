@@ -1,6 +1,6 @@
 <template>
 <div id="login">
-	<Head></Head>
+	<Head headTitle="登陆小米账号" backUrl="/personal"></Head>
 	<form action="" class="input">
 		<input type="text" placeholder="小米账号/手机号/电子邮箱" v-model="username">
 		<div class="pswInput">
@@ -37,17 +37,16 @@ export default {
   	}
   },
   created() {
-    this.setHeadTitle('登录小米账号'),
-    this.setHeadUrl('/personal')
+
   },
   methods:{
-    ...mapMutations(['setHeadTitle','setHeadUrl','setCurUser']), //映射方法
+    ...mapMutations(['setCurUser']), //映射方法
     dologin() {
     	var userInfo = {'username': this.username,'password': this.password}
       Vue.http.jsonp('http://localhost:100/public/user/read', {params: userInfo}).then(rtn => {
-        if (Number(rtn.data) === 1) {
-          localStorage.setItem('curUser',JSON.stringify(userInfo))
-          this.setCurUser(userInfo)
+        if (Number(rtn.data.msg) === 1) {
+          localStorage.setItem('curUser',JSON.stringify(rtn.data))
+          this.setCurUser(rtn.data)
           Toast('登录成功！')
           this.$router.push('./personal')
         } else {

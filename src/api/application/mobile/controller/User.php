@@ -11,9 +11,12 @@
 			$vali = validate("user");
 			if($vali->check($user_data)){
 				db('user')->insert($user_data);
-				return jsonp(1);
+				$user = db('user')->where($user_data)->find();
+				$user['msg'] = 1;
+				return jsonp($user);
 			}else{
-				return jsonp(0);
+				$user['msg'] = 0;
+				return jsonp($user);
 			}
 		}
 		public function read(){
@@ -21,9 +24,11 @@
 			$password = input('password');
 			$user = db('user')->where("username=$username")->where("password=$password")->find();
 			if(empty($user)){
-				return jsonp(0);
+				$user['msg'] = 0;
+				return jsonp($user);
 			}else{
-				return jsonp(1);
+				$user['msg'] = 1;
+				return jsonp($user);
 			}
 		}
 	}

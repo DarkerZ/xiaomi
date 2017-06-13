@@ -31,11 +31,15 @@
 </template>
 
 <script type="es6">
+import {mapState} from 'vuex'
 export default {
   data () {
     return {
-      selected:'tab1'
+      
     }
+  },
+  computed: {
+      ...mapState(['selected'])
   }
 }
 </script>

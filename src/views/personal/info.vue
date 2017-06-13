@@ -1,25 +1,25 @@
 <template>
 	<div id="info">
-		<Head></Head>
+		<Head headTitle="个人资料" backUrl="/personal"></Head>
 		<div class="items">
       <ul>
         <li class="i-head">
-          <router-link to="/personal/info" class="item">
+          <router-link to="" class="item">
             <span>头像</span>
           </router-link>
         </li>
         <li class="i-name">
-          <router-link to="" class="item">
+          <router-link to="info/editInfo?e=name" class="item">
             <span>姓名</span>
           </router-link>
         </li>
         <li class="i-sex">
-          <router-link to="" class="item">
+          <router-link to="info/editInfo?e=sex" class="item">
             <span>性别</span>
           </router-link>
         </li>
         <li class="i-birth">
-          <router-link to="" class="item">
+          <router-link to="info/editInfo?e=birth" class="item">
             <span>生日</span>
           </router-link>
         </li>
@@ -31,15 +31,15 @@
       </ul>
       <ul>
         <li class="i-psw">
-          <router-link to="/personal/setting" class="item">
+          <router-link to="info/editInfo?e=psw" class="item">
             <span>修改密码</span>
           </router-link>
         </li>
-        <li class="i-address">
+        <!-- <li class="i-address">
           <router-link to="/personal/setting" class="item">
             <span>收货地址</span>
           </router-link>
-        </li>
+        </li> -->
       </ul>
     </div>
 	</div>
@@ -60,11 +60,10 @@ export default {
   	}
   },
   created() {
-    this.setHeadTitle('个人资料'),
-    this.setHeadUrl('/personal')
+    
   },
   methods: {
-    ...mapMutations(['setHeadTitle','setHeadUrl']) //映射方法
+    // ...mapMutations(['setHeadTitle','setHeadUrl']) //映射方法
   }
 }	
 </script>

@@ -6,9 +6,8 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    headTitle: '',
-    backUrl: '',
-    curUser: null
+    curUser: null,
+    selected: 'tab1'
   },
   mutations,
   actions

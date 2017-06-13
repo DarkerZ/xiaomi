@@ -9,7 +9,7 @@
 </template>
 
 <script type="es6">
-import { mapState} from 'vuex'
+// import { mapState} from 'vuex'
 
 export default {
 	data() {
@@ -17,9 +17,10 @@ export default {
            
 		}
 	},
-	computed: {
-		...mapState(['headTitle','backUrl'])
-	}
+	// computed: {
+	// 	...mapState(['headTitle','backUrl'])
+	// },
+	props: ['headTitle','backUrl']
 }
 </script>
 

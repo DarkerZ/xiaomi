@@ -1,6 +1,6 @@
 <template>
 <div id="register">
-	<Head></Head>
+	<Head headTitle="注册小米账号" backUrl="/login"></Head>
 	<form action="" class="input">
 		<input type="text" placeholder="手机号" v-model="username" :class="{'bg-red':rightphone}" @keyup="checkphone()">
 		<div class="code_box">
@@ -39,11 +39,10 @@ export default {
   	}
   },
   created() {
-    this.setHeadTitle('注册小米账号'),
-    this.setHeadUrl('/login')
+    
   },
   methods:{
-    ...mapMutations(['setHeadTitle','setHeadUrl','setCurUser']), //映射方法
+    ...mapMutations(['setCurUser']), //映射方法
     checkphone() {
     	if(!/^1\d{10}/.test(this.username)){
     		this.rightphone = true;
@@ -64,7 +63,7 @@ export default {
           'password': this.password,
           'vcode': this.vcode}
           Vue.http.jsonp('http://localhost:100/public/user/create', {params: userInfo}).then(rtn => {
-        if (Number(rtn.data) === 1) {
+        if (Number(rtn.data.msg) === 1) {
           localStorage.setItem('curUser',JSON.stringify(userInfo))
           this.setCurUser(userInfo)
           Toast('注册成功！')

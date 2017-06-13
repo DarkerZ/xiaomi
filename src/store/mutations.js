@@ -13,6 +13,9 @@ export default {
     if (curUser) {
       state.curUser = curUser
     }
+  },
+  setSelected (state, selected) {
+    state.selected = selected
   }
 }
 

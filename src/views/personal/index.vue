@@ -17,19 +17,19 @@
 			</div>
 		</div>
 		<div class="a1">
-			<router-link to="/personal/order" class="order">
+			<router-link to="/personal/order?t=1" class="order">
 				<span class="myorder">我的订单</span>
 				<span class="more">全部订单</span>
 			</router-link>
 			<ul class="nav">
 				<li class="dfk">
-					<router-link to="" class="item">
+					<router-link to="/personal/order?t=2" class="item">
 						<div class="icon"></div>
 						<span>待付款</span>
 					</router-link>
 				</li>
 				<li class="dsh">
-					<router-link to="" class="item">
+					<router-link to="/personal/order?t=3" class="item">
 						<div class="icon"></div>
 						<span>待收货</span>
 					</router-link>
@@ -80,17 +80,18 @@ export default {
     name: 'personal',
     data() {
         return {
-            selected:'tab4'
+            
        }
     },
     created() {
         this.getCurUser();
+        this.setSelected('tab4');
     },
     computed: {
         ...mapState(['curUser'])
     },
     methods: {
-    	...mapMutations(['getCurUser'])
+    	...mapMutations(['getCurUser','setSelected'])
     }
 }
 </script>

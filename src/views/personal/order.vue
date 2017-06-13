@@ -1,7 +1,7 @@
 <template>
 	<div id="order">
-		<Head></Head>
-		<div class="content">	
+		<Head headTitle="我的订单" backUrl="/personal"></Head>
+		<div class="section">	
     <mt-navbar v-model="active" class="nav">
         <mt-tab-item id="tab1">全部</mt-tab-item>
         <mt-tab-item id="tab2">待付款</mt-tab-item>
@@ -11,7 +11,8 @@
         <mt-tab-container-item id="tab1">
         <ul class="order_list">
           <li class="order">
-              <div class="item-1">
+          <router-link to="order/order_detail">
+            <div class="item-1">
                 <span class="date">2017-02-02 22:16</span>
                 <span class="status">已收货</span>
               </div>
@@ -19,24 +20,166 @@
                 <li>
                   <div class="good">
                     <img src="" alt="">
-                    <span></span>
+                    <span class="good_name">小米盒子3c 黑色</span>
                   </div>
-                  <div class="price"></div>
+                  <div class="price">￥199</div>
+                </li>
+                <li>
+                  <div class="good">
+                    <img src="" alt="">
+                    <span class="good_name">小米盒子3c 黑色</span>
+                  </div>
+                  <div class="price">￥199</div>
                 </li>
               </ul>
               <div class="item-3">
-                <span class="quantity"></span>
-                <span class="total"></span>
+                <span class="quantity">
+                  共1件商品 合计：
+                </span>
+                <span class="total">
+                  ￥199
+                </span>
               </div>
+          </router-link>
+            </li>
+            <li class="order">
+              <router-link to="">
+            <div class="item-1">
+                <span class="date">2017-02-02 22:16</span>
+                <span class="status">已收货</span>
+              </div>
+              <ul class="item-2">
+                <li>
+                  <div class="good">
+                    <img src="" alt="">
+                    <span class="good_name">小米盒子3c 黑色</span>
+                  </div>
+                  <div class="price">￥199</div>
+                </li>
+                <li>
+                  <div class="good">
+                    <img src="" alt="">
+                    <span class="good_name">小米盒子3c 黑色</span>
+                  </div>
+                  <div class="price">￥199</div>
+                </li>
+              </ul>
+              <div class="item-3">
+                <span class="quantity">
+                  共1件商品 合计：
+                </span>
+                <span class="total">
+                  ￥199
+                </span>
+              </div>
+          </router-link>
+            </li>
+            <li class="order">
+              <router-link to="">
+            <div class="item-1">
+                <span class="date">2017-02-02 22:16</span>
+                <span class="status">已收货</span>
+              </div>
+              <ul class="item-2">
+                <li>
+                  <div class="good">
+                    <img src="" alt="">
+                    <span class="good_name">小米盒子3c 黑色</span>
+                  </div>
+                  <div class="price">￥199</div>
+                </li>
+                <li>
+                  <div class="good">
+                    <img src="" alt="">
+                    <span class="good_name">小米盒子3c 黑色</span>
+                  </div>
+                  <div class="price">￥199</div>
+                </li>
+              </ul>
+              <div class="item-3">
+                <span class="quantity">
+                  共1件商品 合计：
+                </span>
+                <span class="total">
+                  ￥199
+                </span>
+              </div>
+          </router-link>
             </li>
           </ul>
           </mt-cell>
         </mt-tab-container-item>
         <mt-tab-container-item id="tab2">
-          <mt-cell v-for="n in 5" title="tab-container 2"></mt-cell>
+          <ul class="order_list">
+          <li class="order">
+              <router-link to="">
+            <div class="item-1">
+                <span class="date">2017-02-02 22:16</span>
+                <span class="status">待付款</span>
+              </div>
+              <ul class="item-2">
+                <li>
+                  <div class="good">
+                    <img src="" alt="">
+                    <span class="good_name">小米盒子3c 黑色</span>
+                  </div>
+                  <div class="price">￥199</div>
+                </li>
+                <li>
+                  <div class="good">
+                    <img src="" alt="">
+                    <span class="good_name">小米盒子3c 黑色</span>
+                  </div>
+                  <div class="price">￥199</div>
+                </li>
+              </ul>
+              <div class="item-3">
+                <span class="quantity">
+                  共1件商品 合计：
+                </span>
+                <span class="total">
+                  ￥199
+                </span>
+              </div>
+          </router-link>
+            </li>
+          </ul>
         </mt-tab-container-item>
         <mt-tab-container-item id="tab3">
-          <mt-cell v-for="n in 7" title="tab-container 3"></mt-cell>
+          <ul class="order_list">
+          <li class="order">
+              <router-link to="">
+            <div class="item-1">
+                <span class="date">2017-02-02 22:16</span>
+                <span class="status">待收货</span>
+              </div>
+              <ul class="item-2">
+                <li>
+                  <div class="good">
+                    <img src="" alt="">
+                    <span class="good_name">小米盒子3c 黑色</span>
+                  </div>
+                  <div class="price">￥199</div>
+                </li>
+                <li>
+                  <div class="good">
+                    <img src="" alt="">
+                    <span class="good_name">小米盒子3c 黑色</span>
+                  </div>
+                  <div class="price">￥199</div>
+                </li>
+              </ul>
+              <div class="item-3">
+                <span class="quantity">
+                  共1件商品 合计：
+                </span>
+                <span class="total">
+                  ￥199
+                </span>
+              </div>
+          </router-link>
+            </li>
+          </ul>
         </mt-tab-container-item>
       </mt-tab-container> 
 	</div>
@@ -61,15 +204,21 @@ export default {
   },
   data() {
   	return {
-      active: 'tab1'
+      active: '',
   	}
   },
   created() {
-    this.setHeadTitle('我的订单'),
-    this.setHeadUrl('/personal')
+   
+  },
+  beforeRouteEnter  (to, from, next) {
+     next(vm => {
+       vm.active='tab'+to.query.t
+       
+    })
+    
   },
   methods: {
-    ...mapMutations(['setHeadTitle','setHeadUrl']) //映射方法
+    
   }
 }	
 </script>
@@ -77,7 +226,7 @@ export default {
 <style scoped lang="scss">
 #order{
 	padding-top:40px;
-  .content{
+  .section{
       .nav{
         border-bottom: 1px solid #e0e0e0;
         width: 100%;
@@ -124,10 +273,36 @@ export default {
                 li{
                   padding:20px 16px;
                   border-bottom: 1px solid #e0e0e0;
+                  overflow: hidden;
+                  .good{
+                    float:left;
+                      img{
+                          width:44px;
+                          height: 44px;
+                          vertical-align: middle;
+                      }
+                      .good_name{
+                        font-size:12px;
+                      }
+                    }
+                    .price{
+                      float:right;
+                      font-size:13px;
+                      line-height:44px;
+                    }
+                  }
                 }
-              }
               .item-3{
                 padding:10px 16px;
+                text-align: right;
+                .quantity{
+                  font-size:12px;
+                  color:#888;
+                }
+                .total{
+                  color:#000;
+                  font-size:16px;
+                }
               }
             }
           }

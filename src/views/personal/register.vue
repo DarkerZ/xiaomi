@@ -1,6 +1,6 @@
 <template>
 <div id="register">
-	<Head headTitle="注册小米账号" backUrl="/login"></Head>
+	<Head headTitle="注册小米账号"></Head>
 	<form action="" class="input">
 		<input type="text" placeholder="手机号" v-model="username" :class="{'bg-red':rightphone}" @keyup="checkphone()">
 		<div class="code_box">
@@ -64,8 +64,8 @@ export default {
           'vcode': this.vcode}
           Vue.http.jsonp('http://localhost:100/public/user/create', {params: userInfo}).then(rtn => {
         if (Number(rtn.data.msg) === 1) {
-          localStorage.setItem('curUser',JSON.stringify(userInfo))
-          this.setCurUser(userInfo)
+          localStorage.setItem('curUser',JSON.stringify(rtn.data))
+          this.setCurUser(rtn.data)
           Toast('注册成功！')
           this.$router.push('./personal')
         } else {

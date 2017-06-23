@@ -1,6 +1,6 @@
 <template>
 	<div id="order">
-		<Head headTitle="我的订单" backUrl="/personal"></Head>
+		<Head headTitle="我的订单"></Head>
 		<div class="section">	
     <mt-navbar v-model="active" class="nav">
         <mt-tab-item id="tab1">全部</mt-tab-item>
@@ -10,98 +10,27 @@
 		   <mt-tab-container v-model="active" swipeable class="tab">
         <mt-tab-container-item id="tab1">
         <ul class="order_list">
-          <li class="order">
-          <router-link to="order/order_detail">
+          <li class="order" v-for="order in order_list">
+          <router-link :to="'order/order_detail?id='+order.id">
             <div class="item-1">
-                <span class="date">2017-02-02 22:16</span>
-                <span class="status">已收货</span>
+                <span class="date">{{order.date}}</span>
+                <span class="status">{{order.status}}</span>
               </div>
               <ul class="item-2">
-                <li>
+                <li v-for="good in order.goods">
                   <div class="good">
-                    <img src="" alt="">
-                    <span class="good_name">小米盒子3c 黑色</span>
+                    <img :src="good.goods_image" alt="">
+                    <span class="good_name">{{good.goods_name}}</span>
                   </div>
-                  <div class="price">￥199</div>
-                </li>
-                <li>
-                  <div class="good">
-                    <img src="" alt="">
-                    <span class="good_name">小米盒子3c 黑色</span>
-                  </div>
-                  <div class="price">￥199</div>
+                  <div class="price">￥{{good.goods_price}} × {{good.num}}</div>
                 </li>
               </ul>
               <div class="item-3">
                 <span class="quantity">
-                  共1件商品 合计：
+                  共{{order.goods_num}}件商品 合计：
                 </span>
                 <span class="total">
-                  ￥199
-                </span>
-              </div>
-          </router-link>
-            </li>
-            <li class="order">
-              <router-link to="">
-            <div class="item-1">
-                <span class="date">2017-02-02 22:16</span>
-                <span class="status">已收货</span>
-              </div>
-              <ul class="item-2">
-                <li>
-                  <div class="good">
-                    <img src="" alt="">
-                    <span class="good_name">小米盒子3c 黑色</span>
-                  </div>
-                  <div class="price">￥199</div>
-                </li>
-                <li>
-                  <div class="good">
-                    <img src="" alt="">
-                    <span class="good_name">小米盒子3c 黑色</span>
-                  </div>
-                  <div class="price">￥199</div>
-                </li>
-              </ul>
-              <div class="item-3">
-                <span class="quantity">
-                  共1件商品 合计：
-                </span>
-                <span class="total">
-                  ￥199
-                </span>
-              </div>
-          </router-link>
-            </li>
-            <li class="order">
-              <router-link to="">
-            <div class="item-1">
-                <span class="date">2017-02-02 22:16</span>
-                <span class="status">已收货</span>
-              </div>
-              <ul class="item-2">
-                <li>
-                  <div class="good">
-                    <img src="" alt="">
-                    <span class="good_name">小米盒子3c 黑色</span>
-                  </div>
-                  <div class="price">￥199</div>
-                </li>
-                <li>
-                  <div class="good">
-                    <img src="" alt="">
-                    <span class="good_name">小米盒子3c 黑色</span>
-                  </div>
-                  <div class="price">￥199</div>
-                </li>
-              </ul>
-              <div class="item-3">
-                <span class="quantity">
-                  共1件商品 合计：
-                </span>
-                <span class="total">
-                  ￥199
+                  ￥{{order.total_price}}
                 </span>
               </div>
           </router-link>
@@ -111,34 +40,27 @@
         </mt-tab-container-item>
         <mt-tab-container-item id="tab2">
           <ul class="order_list">
-          <li class="order">
-              <router-link to="">
+          <li class="order" v-for="order in order_list" v-if="order.status=='待付款'">
+          <router-link :to="'order/order_detail?id='+order.id">
             <div class="item-1">
-                <span class="date">2017-02-02 22:16</span>
-                <span class="status">待付款</span>
+                <span class="date">{{order.date}}</span>
+                <span class="status">{{order.status}}</span>
               </div>
               <ul class="item-2">
-                <li>
+                <li v-for="good in order.goods">
                   <div class="good">
-                    <img src="" alt="">
-                    <span class="good_name">小米盒子3c 黑色</span>
+                    <img :src="good.goods_image" alt="">
+                    <span class="good_name">{{good.goods_name}}</span>
                   </div>
-                  <div class="price">￥199</div>
-                </li>
-                <li>
-                  <div class="good">
-                    <img src="" alt="">
-                    <span class="good_name">小米盒子3c 黑色</span>
-                  </div>
-                  <div class="price">￥199</div>
+                  <div class="price">￥{{good.goods_price}} × {{good.num}}</div>
                 </li>
               </ul>
               <div class="item-3">
                 <span class="quantity">
-                  共1件商品 合计：
+                  共{{order.goods_num}}件商品 合计：
                 </span>
                 <span class="total">
-                  ￥199
+                  ￥{{order.total_price}}
                 </span>
               </div>
           </router-link>
@@ -147,34 +69,27 @@
         </mt-tab-container-item>
         <mt-tab-container-item id="tab3">
           <ul class="order_list">
-          <li class="order">
-              <router-link to="">
+          <li class="order" v-for="order in order_list" v-if="order.status=='待收货'">
+          <router-link :to="'order/order_detail?id='+order.id">
             <div class="item-1">
-                <span class="date">2017-02-02 22:16</span>
-                <span class="status">待收货</span>
+                <span class="date">{{order.date}}</span>
+                <span class="status">{{order.status}}</span>
               </div>
               <ul class="item-2">
-                <li>
+                <li v-for="good in order.goods">
                   <div class="good">
-                    <img src="" alt="">
-                    <span class="good_name">小米盒子3c 黑色</span>
+                    <img :src="good.goods_image" alt="">
+                    <span class="good_name">{{good.goods_name}}</span>
                   </div>
-                  <div class="price">￥199</div>
-                </li>
-                <li>
-                  <div class="good">
-                    <img src="" alt="">
-                    <span class="good_name">小米盒子3c 黑色</span>
-                  </div>
-                  <div class="price">￥199</div>
+                  <div class="price">￥{{good.goods_price}} × {{good.num}}</div>
                 </li>
               </ul>
               <div class="item-3">
                 <span class="quantity">
-                  共1件商品 合计：
+                  共{{order.goods_num}}件商品 合计：
                 </span>
                 <span class="total">
-                  ￥199
+                  ￥{{order.total_price}}
                 </span>
               </div>
           </router-link>
@@ -191,6 +106,7 @@ import {mapMutations} from 'vuex'
 import Vue from 'vue'
 import Head from '../../components/Head'
 import { TabContainer, TabContainerItem, Navbar } from 'mint-ui';
+import {baseUrl} from '../../service/config'
 
 Vue.component(TabContainer.name, TabContainer);
 Vue.component(TabContainerItem.name, TabContainerItem);
@@ -205,10 +121,14 @@ export default {
   data() {
   	return {
       active: '',
+      order_list: []
   	}
   },
   created() {
-   
+    let id = JSON.parse(localStorage.getItem('curUser')).id;
+      Vue.http.jsonp(baseUrl+'mobile/order/index/id/'+id).then(rtn => {
+        this.order_list = rtn.data;
+      })
   },
   beforeRouteEnter  (to, from, next) {
      next(vm => {
@@ -247,6 +167,7 @@ export default {
       }
       .tab{
         .mint-tab-container-item{
+          min-height:480px;
           .mint-cell{
             margin-top:8px;
           }
@@ -255,7 +176,7 @@ export default {
               margin-top:8px;
               background:#fff;
               .item-1{
-                padding:10px 16px;
+                padding:10px 14px;
                 overflow: hidden;
                 border-bottom: 1px solid #e0e0e0;
                 .date{
@@ -271,11 +192,13 @@ export default {
               }
               .item-2{
                 li{
-                  padding:20px 16px;
+                  padding:20px 14px;
                   border-bottom: 1px solid #e0e0e0;
                   overflow: hidden;
                   .good{
                     float:left;
+                    width: 70%;
+                    text-align: left;
                       img{
                           width:44px;
                           height: 44px;
@@ -283,17 +206,20 @@ export default {
                       }
                       .good_name{
                         font-size:12px;
+                        margin-left:15px;
                       }
                     }
                     .price{
+                      text-align: right;
                       float:right;
+                      width: 30%;
                       font-size:13px;
                       line-height:44px;
                     }
                   }
                 }
               .item-3{
-                padding:10px 16px;
+                padding:10px 14px;
                 text-align: right;
                 .quantity{
                   font-size:12px;

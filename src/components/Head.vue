@@ -1,8 +1,11 @@
 <template>
 <div id="Head">
 	<mt-header fixed title="">
-  <router-link :to="backUrl" slot="left">
+  <!-- <router-link to="" slot="left">
     <mt-button icon="back">{{ headTitle }}</mt-button>
+  </router-link> -->
+  <router-link to="" slot="left">
+  	<mt-button icon="back" @click.native="$router.go(-1)">{{ headTitle }}</mt-button>
   </router-link>
 </mt-header>
 </div>
@@ -17,10 +20,7 @@ export default {
            
 		}
 	},
-	// computed: {
-	// 	...mapState(['headTitle','backUrl'])
-	// },
-	props: ['headTitle','backUrl']
+    props: ['headTitle']
 }
 </script>
 

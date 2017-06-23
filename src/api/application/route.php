@@ -19,3 +19,14 @@ Route::get('/',function(){
 // 接口：是给到你合作的项目公司去提供数据
 
 Route::resource('user','mobile/user');
+Route::resource('address','mobile/address');
+
+Route::resource('xiaomi','Asp/Advert');
+Route::resource('search','Asp/Goods');
+Route::resource('daily','Asp/Daily');
+
+Route::resource('goods','mobile/goods'); 
+Route::resource('cate','mobile/cate'); 
+Route::resource('goodscate','mobile/goodscate'); 
+
+

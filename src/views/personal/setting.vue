@@ -1,6 +1,6 @@
 <template>
 	<div id="setting">
-		<Head headTitle="设置" backUrl="/personal"></Head>
+		<Head headTitle="设置"></Head>
 		<div class="items">
       <label>账号管理</label>
       <ul>
@@ -10,7 +10,7 @@
           </router-link>
         </li>
         <li class="i-address">
-          <router-link to="" class="item">
+          <router-link to="/personal/address" class="item">
             <span>收货地址</span>
           </router-link>
         </li>

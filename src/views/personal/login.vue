@@ -1,6 +1,6 @@
 <template>
 <div id="login">
-	<Head headTitle="登陆小米账号" backUrl="/personal"></Head>
+	<Head headTitle="登陆小米账号"></Head>
 	<form action="" class="input">
 		<input type="text" placeholder="小米账号/手机号/电子邮箱" v-model="username">
 		<div class="pswInput">
@@ -24,6 +24,7 @@ import {mapMutations} from 'vuex'
 import Head from '../../components/Head'
 import {Toast} from 'mint-ui'
 import Vue from 'vue'
+import {baseUrl} from '../../service/config'
 export default {
   name: 'login',
   components: {
@@ -43,7 +44,7 @@ export default {
     ...mapMutations(['setCurUser']), //映射方法
     dologin() {
     	var userInfo = {'username': this.username,'password': this.password}
-      Vue.http.jsonp('http://localhost:100/public/user/read', {params: userInfo}).then(rtn => {
+      Vue.http.jsonp(baseUrl+'user/read', {params: userInfo}).then(rtn => {
         if (Number(rtn.data.msg) === 1) {
           localStorage.setItem('curUser',JSON.stringify(rtn.data))
           this.setCurUser(rtn.data)

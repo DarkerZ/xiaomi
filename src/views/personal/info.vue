@@ -1,16 +1,11 @@
 <template>
 	<div id="info">
-		<Head headTitle="个人资料" backUrl="/personal"></Head>
+		<Head headTitle="个人资料"></Head>
 		<div class="items">
       <ul>
-        <li class="i-head">
-          <router-link to="" class="item">
-            <span>头像</span>
-          </router-link>
-        </li>
         <li class="i-name">
           <router-link to="info/editInfo?e=name" class="item">
-            <span>姓名</span>
+            <span>用户手机号</span>
           </router-link>
         </li>
         <li class="i-sex">
@@ -18,14 +13,9 @@
             <span>性别</span>
           </router-link>
         </li>
-        <li class="i-birth">
-          <router-link to="info/editInfo?e=birth" class="item">
-            <span>生日</span>
-          </router-link>
-        </li>
-        <li class="i-phone">
+        <li class="i-birth" @click="openPicker">
           <router-link to="" class="item">
-            <span>手机号码</span>
+            <span>生日</span>
           </router-link>
         </li>
       </ul>
@@ -35,19 +25,19 @@
             <span>修改密码</span>
           </router-link>
         </li>
-        <!-- <li class="i-address">
-          <router-link to="/personal/setting" class="item">
-            <span>收货地址</span>
-          </router-link>
-        </li> -->
       </ul>
     </div>
+    <mt-datetime-picker  ref="picker" v-model="pickerVisible" :startDate="date" type="date" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日" @confirm="handleConfirm">
+  </mt-datetime-picker>
 	</div>
 </template>
 
 <script type="es6">
-import {mapMutations} from 'vuex'
+import {mapMutations, mapState} from 'vuex'
+import { DatetimePicker, Toast } from 'mint-ui'
+import Vue from 'vue';
 import Head from '../../components/Head'
+Vue.component(DatetimePicker.name, DatetimePicker);
 
 export default {
   name: 'info',
@@ -56,14 +46,41 @@ export default {
   },
   data() {
   	return {
-      
+      pickerVisible: '',
+      date: new Date("1970"),
+      userInfo: '',
+      id: ''
   	}
   },
   created() {
     
   },
+  computed: {
+        ...mapState(['curUser'])
+  },
   methods: {
-    // ...mapMutations(['setHeadTitle','setHeadUrl']) //映射方法
+    // ...mapMutations(['setHeadTitle','setHeadUrl'])， //映射方法
+    openPicker() {
+      this.id = JSON.parse(localStorage.getItem('curUser')).id
+      Vue.http.jsonp('/api/mobile/user/getInfo',{params:{'id':this.id}}).then(rtn=>{
+          this.userInfo = rtn.data
+          this.$refs.picker.open();
+          this.pickerVisible = new Date(Number(this.userInfo.birth))
+          console.log(this.userInfo.birth);
+        })
+        
+      },
+    handleConfirm(value) {
+      let birthNum = new Date(value).getTime()
+      console.log(birthNum)
+      let Uinfo = {'birth': birthNum, 'id': this.id, 'type': 'birth'}
+        Vue.http.jsonp('/api/mobile/user/updateInfo', {params: Uinfo}).then(rtn=>{       
+          if(rtn.data==1){
+            Toast("修改成功")            
+          }
+                
+        })
+    }
   }
 }	
 </script>

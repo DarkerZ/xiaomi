@@ -2,9 +2,6 @@ export default {
   setHeadTitle (state, title) {
     state.headTitle = title
   },
-  setHeadUrl (state, backUrl) {
-    state.backUrl = backUrl
-  },
   setCurUser (state, curUser) {
     state.curUser = curUser
   },
@@ -16,6 +13,34 @@ export default {
   },
   setSelected (state, selected) {
     state.selected = selected
+  },
+  setUserInfo (state, userInfo) {
+    state.userInfo = userInfo
+  },
+  setbuyList (state, info) {
+    state.buyList = info
+  },
+  setCartList (state, info) {
+    state.cartList = info
+  },
+  setAddressInfo (state, info) {
+    state.addressInfo = info
+  },
+  setSteps (state, steps) {
+    state.steps = steps
+  },
+  setCar (state, goods) {
+    state.carList.push(goods)
+    console.log(goods)
+  },
+  setgoodsList (state, goods) {
+    state.goodsDetail = goods
+  },
+  setcateList (state, cate) {
+    state.cateList = cate
+  },
+  setcateTList (state, cateT) {
+    state.cateTList = cateT
   }
 }
 

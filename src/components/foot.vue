@@ -7,7 +7,7 @@
          </router-link>
          </mt-tab-item>
       <mt-tab-item id="tab2">
-       <router-link to="/category">
+       <router-link to="/cate">
        <div class="ic ispr"></div>
        <span>分类</span>
        </router-link>
@@ -49,9 +49,6 @@ export default {
 .footer{
   background: #fff;
   border-top: 1px solid #e0e0e0;
-  /*position: fixed;
-  bottom:0;
-  left:0;*/
   width: 100%;
   margin: 0;
   padding: 0;

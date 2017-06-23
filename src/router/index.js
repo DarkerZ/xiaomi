@@ -7,15 +7,37 @@ let router = new Router({
   routes: [
     {
       path: '/',
-      component: require('../views/index/index')
+      component: require('../views/home/index')
     },
     {
-      path: '/category',
-      component: require('../views/category/index')
+      path: '/search',
+      component: require('../views/home/search')
+    },
+    {
+      path: '/cate',
+      component: require('../views/cate/index')
+    },
+    {
+      path: '/detail',
+      component: require('../views/cate/detail')
     },
     {
       path: '/buycar',
       component: require('../views/buycar/index')
+    },
+    {
+      path: '/bill',
+      component: require('../views/buycar/bill'),
+      meta: {
+        requireLogin: true
+      }
+    },
+    {
+      path: '/pay',
+      component: require('../views/buycar/pay'),
+      meta: {
+        requireLogin: true
+      }
     },
     {
       path: '/personal',
@@ -60,6 +82,27 @@ let router = new Router({
     {
       path: '/personal/order/order_detail',
       component: require('../views/personal/order_detail'),
+      meta: {
+        requireLogin: true
+      }
+    },
+    {
+      path: '/personal/address',
+      component: require('../views/personal/address'),
+      meta: {
+        requireLogin: true
+      }
+    },
+    {
+      path: '/personal/address/newaddress',
+      component: require('../views/personal/newaddress'),
+      meta: {
+        requireLogin: true
+      }
+    },
+    {
+      path: '/personal/address/editaddress',
+      component: require('../views/personal/editaddress'),
       meta: {
         requireLogin: true
       }
